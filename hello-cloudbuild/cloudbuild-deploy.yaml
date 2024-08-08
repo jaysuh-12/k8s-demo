@@ -1,5 +1,13 @@
 steps:
 
+  - id: gke-gcloud-auth-plugin
+    dir: hello-cloudbuild
+    name: gcr.io/cloud-builders/gcloud
+    args:
+      - components
+      - install
+      - gke-gcloud-auth-plugin
+
   - id: get-kube-config
     dir: hello-cloudbuild
     name: gcr.io/cloud-builders/kubectl
