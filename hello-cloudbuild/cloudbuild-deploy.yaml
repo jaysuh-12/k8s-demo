@@ -18,6 +18,16 @@ steps:
     - KUBECONFIG=/workspace/.kube/config
     args:
        - cluster-info
+  
+  - id: plugin-config
+    dir: hello-cloudbuild
+    name: gcr.io/cloud-builders/gcloud
+    args:
+      - container
+      - clusters
+      - get-credentials
+      - ${_CLOUDSDK_CONTAINER_CLUSTER}
+      - --zone=${_CLOUDSDK_COMPUTE_ZONE}
 
   - id: update-deploy-tag
     dir: hello-cloudbuild
